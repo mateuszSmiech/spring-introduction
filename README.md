@@ -66,7 +66,48 @@ To do:
 
 ## Spring Core
 
+To read:
+* [Spring Framework - Quick Start](https://web.archive.org/web/20180523024533/https://projects.spring.io/spring-framework/)
+
 To do:
 * use Spring Core for dependency injection
 * create unit tests
 
+## Spring Boot & Spring Data
+
+To read:
+* [Building an application with Spring Boot](https://spring.io/guides/gs/spring-boot/)
+* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
+* [Building REST Services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+
+To do:
+* add required Spring Boot & Spring Data dependencies (starters)
+* create controllers, services and repositories for users, orders, receipts, transaction logs and other useful objects
+* add unit tests
+
+## Use other REST service
+
+To read:
+* [Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/)
+
+To do:
+* use `RestTemplate` to implement `CreditCardProcessor`, which will use REST API of another service
+* create Spring Boot application (called Credit Card Application) with REST API for charging credit cards
+
+## Spring MVC
+
+To read:
+* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/consuming-rest/)
+* [Testing the Web Layer](https://spring.io/guides/gs/testing-web/)
+
+To do:
+* in Credit Card Application create some controllers and views for credit card operations
+
+## Spring Security
+
+To read:
+* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
+
+To do:
+* add security in Credit Card Application, only authorized users can use the application
