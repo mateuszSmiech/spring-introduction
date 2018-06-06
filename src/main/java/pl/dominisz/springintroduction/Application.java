@@ -5,20 +5,17 @@ import pl.dominisz.springintroduction.factory.TransactionLogFactory;
 import pl.dominisz.springintroduction.model.CreditCard;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.model.Receipt;
-import pl.dominisz.springintroduction.service.BillingService;
-import pl.dominisz.springintroduction.service.CreditCardBillingService;
-import pl.dominisz.springintroduction.service.DatabaseTransactionLog;
-import pl.dominisz.springintroduction.service.PaypalCreditCardProcessor;
+import pl.dominisz.springintroduction.service.*;
 
 import java.math.BigDecimal;
 
 public class Application {
 
     public static void main(String[] args) {
-        CreditCardProcessorFactory.setInstance(new PaypalCreditCardProcessor());
-        TransactionLogFactory.setInstance(new DatabaseTransactionLog());
+        CreditCardProcessor creditCardProcessor = new PaypalCreditCardProcessor();
+        TransactionLog transactionLog = new DatabaseTransactionLog();
 
-        BillingService billingService = new CreditCardBillingService();
+        BillingService billingService = new CreditCardBillingService(creditCardProcessor, transactionLog);
 
         PizzaOrder pizzaOrder = new PizzaOrder("Pizza Margherita", new BigDecimal(25));
         CreditCard creditCard = new CreditCard();
