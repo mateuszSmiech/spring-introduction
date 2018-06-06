@@ -8,8 +8,11 @@ import pl.dominisz.springintroduction.model.ChargeResult;
  * 06.06.2018
  */
 public class TestTransactionLog implements TransactionLog {
-    public void logChargeResult(ChargeResult result) {
 
+    private ChargeResult chargeResult;
+
+    public void logChargeResult(ChargeResult result) {
+        chargeResult = result;
     }
 
     public void logConnectException(UnreachableException e) {

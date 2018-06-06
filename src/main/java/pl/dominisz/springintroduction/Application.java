@@ -10,6 +10,8 @@ import pl.dominisz.springintroduction.service.CreditCardBillingService;
 import pl.dominisz.springintroduction.service.DatabaseTransactionLog;
 import pl.dominisz.springintroduction.service.PaypalCreditCardProcessor;
 
+import java.math.BigDecimal;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class Application {
 
         BillingService billingService = new CreditCardBillingService();
 
-        PizzaOrder pizzaOrder = new PizzaOrder();
+        PizzaOrder pizzaOrder = new PizzaOrder("Pizza Margherita", new BigDecimal(25));
         CreditCard creditCard = new CreditCard();
 
         Receipt receipt = billingService.chargeOrder(pizzaOrder, creditCard);
