@@ -1,5 +1,6 @@
 package pl.dominisz.springintroduction.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.service.PizzaOrderService;
@@ -16,6 +17,7 @@ public class PizzaOrderController {
 
     private final PizzaOrderService pizzaOrderService;
 
+    @Autowired
     public PizzaOrderController(PizzaOrderService pizzaOrderService) {
         this.pizzaOrderService = pizzaOrderService;
     }
