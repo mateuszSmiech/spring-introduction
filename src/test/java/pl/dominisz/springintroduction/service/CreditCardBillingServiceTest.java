@@ -17,7 +17,7 @@ public class CreditCardBillingServiceTest {
         TransactionLog transactionLog = new TestTransactionLog();
 
         CreditCardBillingService creditCardBillingService = new CreditCardBillingService(creditCardProcessor, transactionLog);
-        PizzaOrder pizzaOrder = new PizzaOrder(1L, LocalDateTime.now(), "description", BigDecimal.TEN);
+        PizzaOrder pizzaOrder = new PizzaOrder(1L, LocalDateTime.now(), false, null, "description", BigDecimal.TEN);
         CreditCard creditCard = new CreditCard();
 
         Receipt actualReceipt = creditCardBillingService.chargeOrder(pizzaOrder, creditCard);

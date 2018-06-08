@@ -20,9 +20,9 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
 
     public InMemoryPizzaOrderRepository() {
         pizzaOrders = new ArrayList<>();
-        pizzaOrders.add(new PizzaOrder(1L, LocalDateTime.now(), "Pizza Margherita", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(2L, LocalDateTime.now(), "Pizza Hawajska", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(3L, LocalDateTime.now(), "Pizza Diablo", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(1L, LocalDateTime.now(), false, null, "Pizza Margherita", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(2L, LocalDateTime.now(), false, null, "Pizza Hawajska", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(3L, LocalDateTime.now(), false, null, "Pizza Diablo", new BigDecimal(25)));
     }
 
     public List<PizzaOrder> findAll() {
@@ -37,12 +37,14 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
     }
 
     public PizzaOrder save(PizzaOrder pizzaOrder) {
-        Long maxId = pizzaOrders.stream()
-                .mapToLong(PizzaOrder::getId)
-                .max()
-                .orElse(1);
-        pizzaOrder.setId(maxId + 1);
-        pizzaOrders.add(pizzaOrder);
+        if (pizzaOrder.getId() == null) {
+            Long maxId = pizzaOrders.stream()
+                    .mapToLong(PizzaOrder::getId)
+                    .max()
+                    .orElse(1);
+            pizzaOrder.setId(maxId + 1);
+            pizzaOrders.add(pizzaOrder);
+        }
         return pizzaOrder;
     }
 }

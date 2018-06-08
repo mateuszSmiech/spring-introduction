@@ -35,4 +35,12 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
         pizzaOrder.setOrderDateTime(LocalDateTime.now());
         return pizzaOrderRepository.save(pizzaOrder);
     }
+
+    @Override
+    public PizzaOrder completeOrder(Long id) {
+        PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id);
+        pizzaOrder.setCompleted(true);
+        pizzaOrder.setCompleteDateTime(LocalDateTime.now());
+        return pizzaOrderRepository.save(pizzaOrder);
+    }
 }
