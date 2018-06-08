@@ -26,7 +26,7 @@ public class PizzaOrderController {
         this.pizzaOrderConverter = pizzaOrderConverter;
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @GetMapping(path = "/")
     public List<PizzaOrder> getAllOrders() {
         return pizzaOrderService.findAll();
     }
@@ -41,13 +41,13 @@ public class PizzaOrderController {
         return pizzaOrderService.completeOrder(id);
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.POST)
+    @PostMapping(path = "/")
     public PizzaOrder createOrder(@RequestBody PizzaOrderDTO pizzaOrderDTO) {
         PizzaOrder pizzaOrder = pizzaOrderConverter.convert(pizzaOrderDTO);
         return pizzaOrderService.create(pizzaOrder);
     }
 
-    @GetMapping("/")
+    @GetMapping("/search")
     public List<PizzaOrder> searchPizzaOrders(@RequestParam boolean completed) {
         return pizzaOrderService.searchPizzaOrders(completed);
     }

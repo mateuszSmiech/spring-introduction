@@ -14,4 +14,7 @@ public interface PizzaOrderRepository {
     PizzaOrder findById(Long id);
     PizzaOrder save(PizzaOrder pizzaOrder);
 
+    List<PizzaOrder> searchByCompleted(boolean completed);
+
+    void deleteById(Long id);
 }
