@@ -17,7 +17,9 @@ import java.time.LocalDateTime;
 public class PizzaOrder {
 
     private Long id;
-    LocalDateTime orderDateTime;
+    private LocalDateTime orderDateTime;
+    private boolean completed;
+    private LocalDateTime completeDateTime;
     private String description;
     private BigDecimal amount;
 

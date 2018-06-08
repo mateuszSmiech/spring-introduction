@@ -36,6 +36,11 @@ public class PizzaOrderController {
         return pizzaOrderService.findById(id);
     }
 
+    @PutMapping(path = "/{id}/completed")
+    public PizzaOrder completeOrder(@PathVariable Long id) {
+        return pizzaOrderService.completeOrder(id);
+    }
+
     @RequestMapping(path = "/", method = RequestMethod.POST)
     public PizzaOrder createOrder(@RequestBody PizzaOrderDTO pizzaOrderDTO) {
         PizzaOrder pizzaOrder = pizzaOrderConverter.convert(pizzaOrderDTO);
