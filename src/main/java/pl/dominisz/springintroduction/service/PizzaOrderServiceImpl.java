@@ -6,6 +6,7 @@ import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.repository.PizzaOrderRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public PizzaOrder create(PizzaOrder pizzaOrder) {
+        pizzaOrder.setOrderDateTime(LocalDateTime.now());
         return pizzaOrderRepository.save(pizzaOrder);
     }
 }

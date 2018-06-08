@@ -5,19 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * http://dominisz.pl
- * 06.06.2018
+ * 08.06.2018
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PizzaOrder {
+public class PizzaOrderDTO {
 
-    private Long id;
-    LocalDateTime orderDateTime;
     private String description;
     private BigDecimal amount;
 

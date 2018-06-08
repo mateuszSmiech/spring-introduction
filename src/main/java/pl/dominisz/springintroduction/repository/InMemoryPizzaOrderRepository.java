@@ -5,6 +5,7 @@ import pl.dominisz.springintroduction.exception.PizzaOrderNotFoundException;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,9 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
 
     public InMemoryPizzaOrderRepository() {
         pizzaOrders = new ArrayList<>();
-        pizzaOrders.add(new PizzaOrder(1L, "Pizza Margherita", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(2L, "Pizza Hawajska", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(3L, "Pizza Diablo", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(1L, LocalDateTime.now(), "Pizza Margherita", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(2L, LocalDateTime.now(), "Pizza Hawajska", new BigDecimal(25)));
+        pizzaOrders.add(new PizzaOrder(3L, LocalDateTime.now(), "Pizza Diablo", new BigDecimal(25)));
     }
 
     public List<PizzaOrder> findAll() {

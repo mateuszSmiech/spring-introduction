@@ -2,13 +2,12 @@ package pl.dominisz.springintroduction.service;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.dominisz.springintroduction.factory.CreditCardProcessorFactory;
-import pl.dominisz.springintroduction.factory.TransactionLogFactory;
 import pl.dominisz.springintroduction.model.CreditCard;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.model.Receipt;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class CreditCardBillingServiceTest {
 
@@ -18,7 +17,7 @@ public class CreditCardBillingServiceTest {
         TransactionLog transactionLog = new TestTransactionLog();
 
         CreditCardBillingService creditCardBillingService = new CreditCardBillingService(creditCardProcessor, transactionLog);
-        PizzaOrder pizzaOrder = new PizzaOrder(1L, "description", BigDecimal.TEN);
+        PizzaOrder pizzaOrder = new PizzaOrder(1L, LocalDateTime.now(), "description", BigDecimal.TEN);
         CreditCard creditCard = new CreditCard();
 
         Receipt actualReceipt = creditCardBillingService.chargeOrder(pizzaOrder, creditCard);
