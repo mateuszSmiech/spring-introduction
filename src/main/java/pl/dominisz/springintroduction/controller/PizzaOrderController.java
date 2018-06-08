@@ -46,4 +46,15 @@ public class PizzaOrderController {
         PizzaOrder pizzaOrder = pizzaOrderConverter.convert(pizzaOrderDTO);
         return pizzaOrderService.create(pizzaOrder);
     }
+
+    @GetMapping("/")
+    public List<PizzaOrder> searchPizzaOrders(@RequestParam boolean completed) {
+        return pizzaOrderService.searchPizzaOrders(completed);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        pizzaOrderService.deleteById(id);
+    }
+
 }
