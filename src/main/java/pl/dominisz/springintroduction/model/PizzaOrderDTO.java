@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * http://dominisz.pl
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class PizzaOrderDTO {
 
-    private String description;
+    private List<String> items;
     private BigDecimal amount;
 
 }

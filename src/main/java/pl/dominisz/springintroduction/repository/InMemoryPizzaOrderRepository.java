@@ -22,9 +22,37 @@ public class InMemoryPizzaOrderRepository implements PizzaOrderRepository {
 
     public InMemoryPizzaOrderRepository() {
         pizzaOrders = new ArrayList<>();
-        pizzaOrders.add(new PizzaOrder(1L, LocalDateTime.now(), false, null, "Pizza Margherita", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(2L, LocalDateTime.now(), false, null, "Pizza Hawajska", new BigDecimal(25)));
-        pizzaOrders.add(new PizzaOrder(3L, LocalDateTime.now(), false, null, "Pizza Diablo", new BigDecimal(25)));
+
+        PizzaOrder order = PizzaOrder.builder()
+                .id(1L)
+                .orderDateTime(LocalDateTime.now())
+                .item("Pizza Margherita")
+                .item("Pepsi")
+                .item("Beer")
+                .amount(new BigDecimal(25))
+                .build();
+
+        pizzaOrders.add(order);
+
+        order = PizzaOrder.builder()
+                .id(2L)
+                .orderDateTime(LocalDateTime.now())
+                .item("Pizza Hawajska")
+                .item("Herbata")
+                .amount(new BigDecimal(20))
+                .build();
+
+        pizzaOrders.add(order);
+
+        order = PizzaOrder.builder()
+                .id(3L)
+                .orderDateTime(LocalDateTime.now())
+                .item("Pizza z czosnkiem")
+                .item("Woda czosnkowa")
+                .amount(new BigDecimal(40))
+                .build();
+
+        pizzaOrders.add(order);
     }
 
     public List<PizzaOrder> findAll() {

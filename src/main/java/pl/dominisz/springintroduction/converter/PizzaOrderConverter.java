@@ -14,7 +14,7 @@ public class PizzaOrderConverter {
     public PizzaOrder convert(PizzaOrderDTO pizzaOrderDTO) {
         PizzaOrder pizzaOrder = new PizzaOrder();
 
-        pizzaOrder.setDescription(pizzaOrderDTO.getDescription());
+        pizzaOrder.setItems(pizzaOrderDTO.getItems());
         pizzaOrder.setAmount(pizzaOrderDTO.getAmount());
 
         return pizzaOrder;

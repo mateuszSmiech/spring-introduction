@@ -1,11 +1,10 @@
 package pl.dominisz.springintroduction.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * http://dominisz.pl
@@ -14,13 +13,15 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class PizzaOrder {
 
     private Long id;
     private LocalDateTime orderDateTime;
     private boolean completed;
     private LocalDateTime completeDateTime;
-    private String description;
+    @Singular
+    private List<String> items;
     private BigDecimal amount;
 
 }
