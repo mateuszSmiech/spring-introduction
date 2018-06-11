@@ -7,6 +7,7 @@ import pl.dominisz.springintroduction.model.CreditCard;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.model.Receipt;
 import pl.dominisz.springintroduction.repository.PizzaOrderRepository;
+import pl.dominisz.springintroduction.repository.ReceiptRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -26,6 +27,9 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Autowired
     private CreditCardBillingService creditCardBillingService;
+
+    @Autowired
+    private ReceiptRepository receiptRepository;
 
     @Override
     public List<PizzaOrder> findAll() {
@@ -67,6 +71,8 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
     public Receipt chargeOrder(Long id, CreditCard creditCard) {
         PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id)
                 .orElseThrow(() -> new PizzaOrderNotFoundException());
-        return creditCardBillingService.chargeOrder(pizzaOrder, creditCard);
+        Receipt receipt = creditCardBillingService.chargeOrder(pizzaOrder, creditCard);
+        receiptRepository.save(receipt);
+        return receipt;
     }
 }

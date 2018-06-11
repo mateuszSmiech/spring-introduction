@@ -1,12 +1,20 @@
 package pl.dominisz.springintroduction.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
  * http://dominisz.pl
  * 06.06.2018
  */
+@Entity
 public class Receipt {
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private final BigDecimal amount;
     private final boolean successful;
