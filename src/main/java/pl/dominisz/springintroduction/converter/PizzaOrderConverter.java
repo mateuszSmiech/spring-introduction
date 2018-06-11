@@ -19,7 +19,7 @@ public class PizzaOrderConverter {
         PizzaOrder pizzaOrder = new PizzaOrder();
 
         List<OrderItem> orderItemList = pizzaOrderDTO.getItems().stream()
-                .map(s -> new OrderItem(s))
+                .map(description -> new OrderItem(pizzaOrder, description))
                 .collect(Collectors.toList());
 
         pizzaOrder.setItems(orderItemList);

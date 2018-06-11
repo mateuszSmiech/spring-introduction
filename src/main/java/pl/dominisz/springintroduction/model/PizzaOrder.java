@@ -29,7 +29,7 @@ public class PizzaOrder {
     private LocalDateTime completeDateTime;
 
     @Singular
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items;
 
     private BigDecimal amount;
