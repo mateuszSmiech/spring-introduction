@@ -2,6 +2,7 @@ package pl.dominisz.springintroduction.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.dominisz.springintroduction.exception.PizzaOrderNotFoundException;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.repository.PizzaOrderRepository;
 
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * http://dominisz.pl
@@ -27,7 +29,8 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public PizzaOrder findById(Long id) {
-        return pizzaOrderRepository.findById(id);
+        return pizzaOrderRepository.findById(id)
+                .orElseThrow(() -> new PizzaOrderNotFoundException());
     }
 
     @Override
@@ -38,7 +41,8 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public PizzaOrder completeOrder(Long id) {
-        PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id);
+        PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id)
+                .orElseThrow(() -> new PizzaOrderNotFoundException());
         pizzaOrder.setCompleted(true);
         pizzaOrder.setCompleteDateTime(LocalDateTime.now());
         return pizzaOrderRepository.save(pizzaOrder);
@@ -46,7 +50,7 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Override
     public List<PizzaOrder> searchPizzaOrders(boolean completed) {
-        return pizzaOrderRepository.searchByCompleted(completed);
+        return pizzaOrderRepository.findByCompleted(completed);
     }
 
     @Override
