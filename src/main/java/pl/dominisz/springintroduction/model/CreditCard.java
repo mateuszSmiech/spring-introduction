@@ -1,9 +1,12 @@
 package pl.dominisz.springintroduction.model;
 
+import lombok.Getter;
+
 /**
  * http://dominisz.pl
  * 06.06.2018
  */
+@Getter
 public class CreditCard {
 
     private final String number;

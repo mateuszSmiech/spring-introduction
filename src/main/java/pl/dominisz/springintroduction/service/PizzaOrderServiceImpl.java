@@ -3,7 +3,9 @@ package pl.dominisz.springintroduction.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.dominisz.springintroduction.exception.PizzaOrderNotFoundException;
+import pl.dominisz.springintroduction.model.CreditCard;
 import pl.dominisz.springintroduction.model.PizzaOrder;
+import pl.dominisz.springintroduction.model.Receipt;
 import pl.dominisz.springintroduction.repository.PizzaOrderRepository;
 
 import java.math.BigDecimal;
@@ -21,6 +23,9 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     @Autowired
     private PizzaOrderRepository pizzaOrderRepository;
+
+    @Autowired
+    private CreditCardBillingService creditCardBillingService;
 
     @Override
     public List<PizzaOrder> findAll() {
@@ -56,5 +61,12 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
     @Override
     public void deleteById(Long id) {
         pizzaOrderRepository.deleteById(id);
+    }
+
+    @Override
+    public Receipt chargeOrder(Long id, CreditCard creditCard) {
+        PizzaOrder pizzaOrder = pizzaOrderRepository.findById(id)
+                .orElseThrow(() -> new PizzaOrderNotFoundException());
+        return creditCardBillingService.chargeOrder(pizzaOrder, creditCard);
     }
 }

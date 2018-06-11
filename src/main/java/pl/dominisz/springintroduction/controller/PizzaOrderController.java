@@ -3,8 +3,10 @@ package pl.dominisz.springintroduction.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.dominisz.springintroduction.converter.PizzaOrderConverter;
+import pl.dominisz.springintroduction.model.CreditCard;
 import pl.dominisz.springintroduction.model.PizzaOrder;
 import pl.dominisz.springintroduction.model.PizzaOrderDTO;
+import pl.dominisz.springintroduction.model.Receipt;
 import pl.dominisz.springintroduction.service.PizzaOrderService;
 
 import java.util.List;
@@ -39,6 +41,11 @@ public class PizzaOrderController {
     @PutMapping(path = "/{id}/completed")
     public PizzaOrder completeOrder(@PathVariable Long id) {
         return pizzaOrderService.completeOrder(id);
+    }
+
+    @PutMapping(path = "/{id}/charge")
+    public Receipt chargeOrder(@PathVariable Long id, @RequestBody CreditCard creditCard) {
+        return pizzaOrderService.chargeOrder(id, creditCard);
     }
 
     @PostMapping(path = "/")

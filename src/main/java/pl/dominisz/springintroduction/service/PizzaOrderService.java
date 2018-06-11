@@ -1,6 +1,8 @@
 package pl.dominisz.springintroduction.service;
 
+import pl.dominisz.springintroduction.model.CreditCard;
 import pl.dominisz.springintroduction.model.PizzaOrder;
+import pl.dominisz.springintroduction.model.Receipt;
 
 import java.util.List;
 
@@ -20,4 +22,6 @@ public interface PizzaOrderService {
     List<PizzaOrder> searchPizzaOrders(boolean completed);
 
     void deleteById(Long id);
+
+    Receipt chargeOrder(Long id, CreditCard creditCard);
 }
